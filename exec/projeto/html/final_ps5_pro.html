@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Apex Eletronics</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/projeto/image/icon.png">
+    <link rel="stylesheet" href="/projeto/css/style_carrinho.css">
+</head>
+
+<body>
+
+    <body>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/projeto/html/index.html">
+                    <figure>
+                        <img src="/projeto/image/logo.png" width="100" height="80">
+                    </figure>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/projeto/html/produtos.html">Produtos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/projeto/html/contato.html">Contato</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/projeto/html/index.html#localizacao">Localização</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#exampleModal">Sobre
+                                nós</a>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+            <div class="checkout-container">
+                <h2>Finalizar Compra</h2>
+
+                <!-- Resumo do Pedido -->
+                <section class="pedido">
+                    <h3>Resumo do Pedido</h3>
+                    <figcaption class="produto">
+                        <img src="/projeto/image/ps5pro.webp" alt="Playstation 5 Pro">
+                        <article class="detalhes">
+                            <p>Console PlayStation 5 Pro Sony, SSD 2TB, Com Controle Sem Fio DualSense, Branco.</p>
+                            <p>R$ 6.416,99</p>
+                        </article>
+                    </figcaption>
+                    
+                    <hr>
+                    <article class="total">
+                        <p><strong>Total:</strong> R$ 6.416,99</p>
+                    </article>
+                </section>
+                <div class="container my-5">
+                    <h2 class="text-center mb-4">Finalizar Compra</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Detalhes de Cobrança</h4>
+                            <form name="" method="" action="">
+                                <div class="mb-3">
+                                    <label for="nome" class="form-label">Nome Completo</label>
+                                    <input type="text" name="nome" id="nome" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">E-mail</label>
+                                    <input type="email" name="email" id="email" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="endereco" class="form-label">Endereço</label>
+                                    <input type="text" name="endereco" id="endereco" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="cidade" class="form-label">Cidade</label>
+                                    <input type="text" name="cidade" id="cidade" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="cep" class="form-label">CEP</label>
+                                    <input type="text" name="cep" id="cep" class="form-control" required>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Pagamento</h4>
+                            <form name="" method="" action="">
+                                <div class="mb-3">
+                                    <label for="numero" class="form-label">Número do Cartão</label>
+                                    <input type="text" name="numero" id="numero" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="cartao" class="form-label">Nome no Cartão</label>
+                                    <input type="text" name="cartao" id="cartao" class="form-control" required>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validade" class="form-label">Validade</label>
+                                        <input type="text" name="validade" id="validade" class="form-control" placeholder="MM/AA" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="cvv" class="form-label">CVV</label>
+                                        <input type="text" name="cvv" id="cvv" class="form-control" required>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-success w-100" onclick="verificarDados()">Finalizar Compra</button>
+                            </form>
+                            <div id="alerta"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <figure>
+                <img src="/projeto/image/logo.png" width="100" height="80">
+            </figure>
+    
+            <p>&copy; Desenvolvido por Juan Victor Fernandez de Araujo 2025. Todos os direitos reservados.</p>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            function verificarDados() {
+                var cartao = document.getElementById("numero").value;
+                var cvv = document.getElementById("cvv").value;
+
+
+                if (cartao === "" || cvv === "") {
+                    document.getElementById("alerta").innerHTML =
+                        '<div class="alert alert-warning" role="alert">Por favor, preencha todos os campos!</div>';
+                } else {
+                    document.getElementById("alerta").innerHTML =
+                        '<div class="alert alert-success" role="alert">Pedido realizado com sucesso!</div>';
+                    //window.location.href = "index.html"; // Redireciona para a página index.html
+                } 
+            }
+                  
+        </script>
+    </body>
+
+</html>
